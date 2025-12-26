@@ -2,27 +2,24 @@ import pandas as pd
 import random
 import numpy as np
 
-# Settings
 NUM_USERS = 1000
 
-# Lists for random generation
+# Lists
 reward_types = ['Cashback', 'Travel', 'Points']
-# Weights: 40% want Cashback, 30% Travel, 30% Points
+# 40% want Cashback, 30% Travel, 30% Points
 reward_weights = [0.4, 0.3, 0.3]
 
 data = []
 
 for i in range(NUM_USERS):
-    # Simulate Age (weighted towards young professionals)
+    # bias towards young professionals
     age = int(np.random.triangular(18, 25, 70))
     
-    # Simulate Income (Log-normal distribution to look realistic - most people earn 40k-90k, few earn 200k+)
+    # Log-normal distribution to look realistic
     income = int(np.random.lognormal(mean=11.0, sigma=0.5))
     
-    # Simulate Credit Score (300 to 900, weighted towards 700)
     credit_score = int(np.random.triangular(500, 720, 900))
     
-    # Spending patterns based on income (Higher income = Higher spend)
     spend_factor = income / 50000 
     grocery = random.randint(200, 800) * spend_factor
     dining = random.randint(50, 600) * spend_factor
@@ -45,7 +42,6 @@ for i in range(NUM_USERS):
         pref
     ])
 
-# Create DataFrame
 columns = [
     'User_ID', 'Age', 'Annual_Income', 'Credit_Score', 
     'Monthly_Spend_Grocery', 'Monthly_Spend_Dining', 'Monthly_Spend_Gas', 
@@ -54,6 +50,5 @@ columns = [
 
 df_users = pd.DataFrame(data, columns=columns)
 
-# Save to CSV
 df_users.to_csv('generated_users.csv', index=False)
 print(f"Generated {NUM_USERS} users!")
