@@ -65,7 +65,7 @@ for index, user in users_df.iterrows():
 results_df = pd.DataFrame(recommendations)
 
 # Show the first 10 recommendations
-print(results_df.head(10))
+print(results_df.head(1000))
 
 # Save to file
 results_df.to_csv('final_recommendations.csv', index=False)
