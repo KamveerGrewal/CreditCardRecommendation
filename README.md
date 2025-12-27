@@ -5,7 +5,7 @@
 This project simulates a financial product recommendation engine. It matches Canadian users to the credit card based on their spending habits, income, credit score, and risk profile. 
 The goal was to move beyond "filtering" and calculate the Net **Annual Value** for every user to maximize their financial return.
 
-### Approach
+### Method
   **Data Engineering:** Built a dataset of 50+ Canadian credit cards (Scotiabank, TD, Amex, etc.) including fees, reward multipliers, and income gates.
   **User Simulation:** Generated 1,000 user profiles using Python (`numpy` log-normal distributions) to mimic real-world income and spending variance.
   **Logic Engine:** Developed a Python script to calculate the NAV for every user-card combination:
